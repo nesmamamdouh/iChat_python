@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Fullscreen Responsive Register Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+  <link rel="stylesheet" href="{{ static_url("bootstrap/css/bootstrap.min.css")}}">
+  <link rel="stylesheet" href="{{ static_url("css/style.css")}}">
+  <link rel="stylesheet" href="{{ static_url("css/font-awesome.min.css")}}">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="{{ static_url("js/jquery-3.1.1.js")}}"></script>
+  <script src="{{ static_url("bootstrap/js/bootstrap.min.js")}}"></script>
+  <script src="{{ static_url("js/jquery.backstretch.min.js")}}"></script>
+  <script src="{{ static_url("js/scripts.js")}}"></script>
+  <script src="{{ static_url("js/jquery.bxslider.js")}}"></script>
+  <link href="{{ static_url("css/jquery.bxslider.css")}}" rel="stylesheet" />
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="logo col-xs-4">
+          <h1><a href="">iChat<span class="red">.</span></a></h1>
+        </div>
+        <div class="links col-xs-8">
+          <a href="/home">Home</a>
+          <a href="/mygroups">My Groups</a>
+          <a href="/discovergroups">Discover Groups</a>
+          <a href="/myfriends">My Friend</a>
+          <a href="#" class="home"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+          <!-- <a class="blog icon" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a> -->
+          <a href="#" class="name"></a>
+          <img class="img-circle" src="{{ static_url("img/pic.jpg")}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container home_container">
+    <div class="col-xs-12 tab_cat">
+      <div class="col-xs-8">
+        <ul class="bxslider">
+          <li class="img1"><</li>
+          <li class="img2"><</li>
+          <li class="img3"><</li>
+          <!-- <li><img src="{{ static_url("img/2.jpg")}}" /></li> -->
+          <!-- <li><img src="{{ static_url("img/3.jpg")}}" /></li> -->
+        </ul>
+      </div>
+      <div class="col-xs-4">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#countries">Countries</a></li>
+          <li><a data-toggle="tab" href="#languages">Languages</a></li>
+          <li><a data-toggle="tab" href="#religious">Religious</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="countries" class="tab-pane fade in active">
+            <h3>HOME</h3>
+            <p>Some content.</p>
+          </div>
+          <div id="languages" class="tab-pane fade">
+            <h3>Menu 1</h3>
+            <p>Some content in menu 1.</p>
+          </div>
+          <div id="religious" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Some content in menu 2.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="col-xs-3">
+        <div class="col-xs-12"><h2>Super Friends</h2></div>
+        <div class="col-xs-12 super_friend"></div>
+        <div class="col-xs-12">
+          <ul>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="col-xs-12"><h2>Party Man</h2></div>
+        <div class="col-xs-12 party_man"></div>
+        <div class="col-xs-12">
+          <ul>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="col-xs-12"><h2>Chatty One</h2></div>
+        <div class="col-xs-12 chatty_one"></div>
+        <div class="col-xs-12">
+          <ul>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="col-xs-12"><h2>Public Figure</h2></div>
+        <div class="col-xs-12 public_figure"></div>
+        <div class="col-xs-12">
+          <ul>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+            <li>Ahmed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- Javascript -->
+
+<script>
+  var text = '{% raw user %}';
+  var obj = JSON.parse(text);
+  console.log(obj);
+  $(".name").text(obj.firstname + " " + obj.lastname);
+  // console.log(obj.firstname);
+  // console.log(obj.email);
+  // console.log(obj.lastname);
+  // console.log(obj.id);
+
+  $(document).ready(function(){
+    $('.bxslider').bxSlider();
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Update</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- CSS -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+    <link rel="stylesheet" href="{{ static_url("bootstrap/css/bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{ static_url("css/style.css")}}">
+    <script src="{{ static_url("js/jquery-3.1.1.js")}}"></script>
+    <script src="{{ static_url("bootstrap/js/bootstrap.min.js")}}"></script>
+    <script src="{{ static_url("js/jquery.backstretch.min.js")}}"></script>
+    <script src="{{ static_url("js/scripts.js")}}"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="logo col-xs-4">
+            <h1><a href="">iChat<span class="red">.</span></a></h1>
+          </div>
+          <div class="links col-xs-8">
+            <a href="/home">Home</a>
+            <a href="/mygroups">My Groups</a>
+            <a href="/discovergroups">Discover Groups</a>
+            <a href="/myfriends">My Friend</a>
+            <a href="#" class="home"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <!-- <a class="blog icon" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a> -->
+            <a href="#" class="name"></a>
+            <img class="img-circle" src="{{ static_url("img/pic.jpg")}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-xs-12 cover" style="background-image:url('{{ static_url("img/cover.jpg")}}')">
+        <div class="profile_pic"><img width="150" height="150" src="{{ static_url("img/pic.jpg")}}" alt=""></div>
+      </div>
+      <div class="col-xs-12 update">
+        <div class="update col-xs-5">
+            <form action="" method="post">
+                <h2>Update Your Profile in <span class="red"><strong>iChat</strong></span></h2>
+                <label for="firstname">First Name</label><br/>
+                <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name"><br/>
+                <label for="lastname">Last Name</label><br/>
+                <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name"><br/>
+                <label for="username">Username</label><br/>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Username"><br/>
+                <label for="email">Email</label><br/>
+                <input class="form-control" type="text" id="email" name="email" placeholder="Enter Your Email"><br/>
+                <label for="img-profile">Profile Picture</label><br/>
+                <input type="file" id="img-profile" name="img-profile"><br/>
+                <button type="submit" class="btn btn-default">Done</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
