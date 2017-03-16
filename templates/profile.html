@@ -1,0 +1,26 @@
+{% extends ../base.html %}
+{% block content %}
+  <div class="container">
+    <div class="col-xs-12 cover" style="background-image:url('{{ static_url("img/cover.jpg")}}')">
+      <div class="profile_pic"><img width="150" height="150" src="{{ static_url("img/pic.jpg")}}" alt=""></div>
+    </div>
+    <div class="col-xs-12 update">
+      <div class="update col-xs-5">
+          <form action="" method="post">
+              <h2>Update Your Profile in <span class="red"><strong>iChat</strong></span></h2>
+              <label for="firstname">First Name</label><br/>
+              <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name"><br/>
+              <label for="lastname">Last Name</label><br/>
+              <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name"><br/>
+              <label for="username">Username</label><br/>
+              <input class="form-control" type="text" id="username" name="username" placeholder="Username"><br/>
+              <label for="email">Email</label><br/>
+              <input class="form-control" type="text" id="email" name="email" placeholder="Enter Your Email"><br/>
+              <label for="img-profile">Profile Picture</label><br/>
+              <input type="file" id="img-profile" name="img-profile"><br/>
+              <button type="submit" class="btn btn-default">Done</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  {% end %}

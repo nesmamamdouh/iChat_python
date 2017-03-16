@@ -1,0 +1,106 @@
+  {% extends ../base.html %}
+  {% block content %}
+    <div class="container home_container">
+      <div class="col-xs-12 tab_cat">
+        <div class="col-xs-8">
+          <ul class="bxslider">
+            <li class="img1"><</li>
+            <li class="img2"><</li>
+            <li class="img3"><</li>
+            <!-- <li><img src="{{ static_url("img/2.jpg")}}" /></li> -->
+            <!-- <li><img src="{{ static_url("img/3.jpg")}}" /></li> -->
+          </ul>
+        </div>
+        <div class="col-xs-4">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#countries">Countries</a></li>
+            <li><a data-toggle="tab" href="#languages">Languages</a></li>
+            <li><a data-toggle="tab" href="#religious">Religious</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="countries" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <p>Some content.</p>
+            </div>
+            <div id="languages" class="tab-pane fade">
+              <h3>Menu 1</h3>
+              <p>Some content in menu 1.</p>
+            </div>
+            <div id="religious" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Some content in menu 2.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="col-xs-3">
+          <div class="col-xs-12"><h2>Super Friends</h2></div>
+          <div class="col-xs-12 super_friend"></div>
+          <div class="col-xs-12">
+            <ul>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="col-xs-12"><h2>Party Man</h2></div>
+          <div class="col-xs-12 party_man"></div>
+          <div class="col-xs-12">
+            <ul>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="col-xs-12"><h2>Chatty One</h2></div>
+          <div class="col-xs-12 chatty_one"></div>
+          <div class="col-xs-12">
+            <ul>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="col-xs-12"><h2>Public Figure</h2></div>
+          <div class="col-xs-12 public_figure"></div>
+          <div class="col-xs-12">
+            <ul>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+              <li>Ahmed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <!-- Javascript -->
+
+  <script>
+
+    $(document).ready(function(){
+      $('.bxslider').bxSlider();
+    });
+  </script>
+  </body>
+
+  </html>
+  {% end%}

@@ -1,0 +1,38 @@
+{% extends ../base.html %}
+{% block content %}
+  <div class="container">
+    <div class="col-xs-12 update">
+      <div class="col-xs-12 my-group">My Friends</div>
+      {% for item in discoverfriends %}
+      <div class="col-xs-6 findf" >
+           <div class="img col-xs-3">
+             <img src="{{ static_url("img/1.jpg")}}" width="100" height="100" alt="img">
+           </div>
+           <div class="info_f col-xs-9">
+             <div class="info-back">
+               <h3>{{ item['Fname'] }} {{ item['Lname'] }}</h3>
+               <button type="button" class="btn" alt="{{ item['_id'] }}" name="button">Add Friend</button>
+             </div>
+           </div>
+      </div>
+      {% end %}
+    </div>
+  </div>
+<script type="text/javascript">
+
+  $(".btn").click(function() {
+     var id = $(this).attr("alt");
+     $(this).html("Request Sent");
+     $(this).addClass("disabled");
+     $.ajax({
+         method: 'get',
+         url: 'http://localhost:8888/addfriend',
+         data: {user_id: id},
+         success: function(res){
+
+         }
+     })
+  });
+
+</script>
+{% end %}

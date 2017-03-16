@@ -1,0 +1,39 @@
+{% extends ../base.html %}
+{% block content %}
+  <div class="container">
+    <div class="col-xs-12 update">
+      <div class="col-xs-12 my-group">Discover Groups</div>
+      <div class="row">
+      {% for item in discovergroups %}
+        <div class="col-sm-4">
+          <div class="ih-item circle effect13 from_left_and_right"><a href="#">
+              <div class="img"><img src="{{ static_url("img/1.jpg")}}" alt="img"></div>
+              <div class="info">
+                <div class="info-back">
+                  <h3>{{ item['name'] }}</h3>
+                </div>
+              </div></a></div>
+              <button type="button" class="btn" name="button" alt="{{ item['_id'] }}" style="color: black;text-align: center;margin: 13px;margin-left: 58px;">Add to group</button>
+        </div>
+      {% end %}
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+
+    $(".btn").click(function() {
+       var id = $(this).attr("alt");
+       $(this).html("Added");
+       $.ajax({
+           method: 'get',
+           url: 'http://localhost:8888/addtogroup',
+           data: {group_id: id},
+           success: function(res){
+
+           }
+       })
+    });
+
+  </script>
+
+{% end %}
