@@ -1,55 +1,37 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <title>Fullscreen Responsive Register Template</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- CSS -->
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
-  <link rel="stylesheet" href="{{ static_url("bootstrap/css/bootstrap.min.css")}}">
-  <link rel="stylesheet" href="{{ static_url("css/style.css")}}">
-
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-</head>
-
-<body>
-
-  <div class="header">
-    <div class="container">
-      <div class="row">
-        <div class="logo col-xs-4">
-          <h1><a href="">iChat<span class="red">.</span></a></h1>
-        </div>
-        <div class="links col-xs-8">
-          <a href="/home">Home</a>
-          <a href="/mygroups">My Groups</a>
-          <a href="/discovergroups">Discover Groups</a>
-          <a href="/myfriends">My Friend</a>
-          <a class="home icon" href="" rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
-          <a class="blog icon" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a>
-        </div>
+{% extends ../base.html %}
+{% block content %}
+  <div class="container">
+    <div class="col-xs-12 update">
+      <div class="col-xs-12 my-group">My Friends</div>
+      {% for item in usr_friend %}
+      <div class="col-xs-6 findf" >
+           <div class="img col-xs-3">
+             <img src="{{ static_url("img/1.jpg")}}" width="100" height="100" alt="img">
+           </div>
+           <div class="info_f col-xs-9">
+             <div class="info-back">
+               <h3>{{ item['Fname'] }} {{ item['Lname'] }}</h3>
+               <button type="button" class="btn" alt="{{ item['_id'] }}" name="button"> Unfriend</button>
+             </div>
+           </div>
       </div>
+      {% end %}
     </div>
   </div>
+<script type="text/javascript">
 
+  $(".btn").click(function() {
+     var id = $(this).attr("alt");
+     $(this).html("Removed");
+     $.ajax({
+         method: 'get',
+         url: 'http://localhost:8888/removefriend',
+         data: {user_id: id},
+         success: function(res){
 
+         }
+     })
+  });
 
-  <!-- Javascript -->
-  <script src="{{ static_url("js/jquery-3.1.1.js")}}"></script>
-  <script src="{{ static_url("bootstrap/js/bootstrap.min.js")}}"></script>
-  <script src="{{ static_url("js/jquery.backstretch.min.js")}}"></script>
-  <script src="{{ static_url("js/scripts.js")}}"></script>
-</body>
-
-</html>
+</script>
+{% end %}

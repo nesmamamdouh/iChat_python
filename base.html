@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} Main {% end %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+  <link rel="stylesheet" href="{{ static_url("bootstrap/css/bootstrap.min.css")}}">
+  <link rel="stylesheet" href="{{ static_url("css/style.css")}}">
+  <link rel="stylesheet" href="{{ static_url("css/font-awesome.min.css")}}">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="{{ static_url("js/jquery-3.1.1.js")}}"></script>
+	<script src="{{ static_url("js/chat.js")}}"></script>
+  <script src="{{ static_url("bootstrap/js/bootstrap.min.js")}}"></script>
+  <script src="{{ static_url("js/jquery.backstretch.min.js")}}"></script>
+  <script src="{{ static_url("js/scripts.js")}}"></script>
+  <script src="{{ static_url("js/jquery.bxslider.js")}}"></script>
+  <link href="{{ static_url("css/jquery.bxslider.css")}}" rel="stylesheet" />
+	<link rel="stylesheet" href="{{ static_url("css/main.css")}}">
+  <link rel="stylesheet" href="{{ static_url("css/font-awesome.min.css")}}">
+
+	{% block script %} {% end %}
+</head>
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="row">
+				<div class="logo col-xs-3">
+					<h1><a href="">iChat<span class="red">.</span></a></h1>
+				</div>
+				<div class="links col-xs-9">
+					{% if current_user %}
+					<a href="/home">Home</a>
+					<a href="/mygroups">My Groups</a>
+					<a href="/discovergroups">Discover Groups</a>
+					<a href="/myfriends">My Friend</a>
+					<a href="/findfriends">Find Friends</a>
+					<a href="requestfriends" class="home">
+						{% if current_user['friend_requests'] %}
+						<i class="fa fa-user-plus" aria-hidden="true" style="color:red">
+						{% else %}
+						<i class="fa fa-user-plus" aria-hidden="true">	
+						{% end %}
+					</i></a>
+					<!-- <a class="blog icon" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a> -->
+					<a href="/profile" class="name">{{current_user['firstname']}} {{current_user['lastname']}}</a>
+					<img class="img-circle" src="{{ static_url("img/pic.jpg")}}">
+					<a href="/logout">Logout</a>
+					{%end%}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% block content %}
+	{% end %}

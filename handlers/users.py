@@ -17,16 +17,20 @@ class LoginHandler(BaseHandler):
     def post(self):
         email_usr = self.get_argument("email", "")
         password = self.get_argument("password", "")
-        checkusr = db.users.find_one({'$and':[{'email':email_usr},{'password':password}]})
+        checkusr = db.users.find_one({
+            '$and': [
+                {'email': email_usr},
+                {'password': password}
+            ]
+        })
         if checkusr:
-            # print(checkusr.get('_id'))
-            id_usr = str(checkusr['_id'])
-            user = {"id":id_usr,"firstname":checkusr['Fname'],"email":email_usr,"lastname":checkusr['Lname']}
-            self.set_secure_cookie("user", json_util.dumps(user))
+            id_usr = checkusr['_id']
+            user = {"id":str(id_usr),"firstname":checkusr['Fname'],"email":email_usr,"lastname":checkusr['Lname'],"friends":checkusr['friends'],"friend_requests":checkusr['friend_requests']}
+            self.set_secure_cookie("user", json.dumps(user))
             self.redirect("/home")
         else:
             error_msg = "Login incorrect"
-            self.render(u"/login" , error_msg=error_msg)
+            self.render("../templates/login.html" , error_msg=error_msg)
 
 class RegisterHandler(LoginHandler):
     def get(self):
@@ -40,24 +44,27 @@ class RegisterHandler(LoginHandler):
         already_taken = db.users.find({'email':email});
         if already_taken.count() > 0:
           error_msg = {"error_msg":"Email Already Taken"}
-          self.set_secure_cookie("error_msg", json.dumps(error_msg))
+          self.set_secure_cookie("error_msg", json_util.dumps(error_msg))
           self.redirect("/register" )
-        db.users.insert({
+        id_usr = db.users.insert({
             'Fname':firstname,
             'Lname':lastname,
             'email':email,
-            'password':password,
+            'password':str(password),
             'username':username,
-            'stat':"on"
+            'stat':"on",
+            'friends':[],
+            'groups':[],
+            'friend_requests':[]
         })
-        user = {"firstname":firstname,"email":email,"lastname":lastname}
+        user = {"id":str(id_usr),"firstname":firstname,"email":email,"lastname":lastname,"friends":[],"groups":[],"friend_requests":[]}
         self.set_secure_cookie("user", json.dumps(user))
         self.redirect("/home")
 
 class LogoutHandler(BaseHandler):
     def get(self):
         self.clear_cookie("user")
-        self.render(u"../templates/login.html")
+        self.redirect("/login")
 class ProfileHandler(BaseHandler):
     def get(self):
         email = self.get_argument("email", "")
@@ -68,7 +75,7 @@ class ProfileHandler(BaseHandler):
         already_taken = db.users.find({'email':email});
         if already_taken.count() > 0:
           error_msg = {"error_msg":"Email Already Taken"}
-          self.set_secure_cookie("error_msg", json.dumps(error_msg))
+          self.set_secure_cookie("error_msg", json_util.dumps(error_msg))
           self.render(u"../profile")
     def get(self):
         self.render(u"../templates/profile.html")

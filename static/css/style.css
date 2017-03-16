@@ -412,6 +412,13 @@ li{
   background-position: center center;
   border: 10px solid white;
 }
+.my-group{
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.27);
+  margin-bottom: 17px;
+  padding-bottom: 12px;
+}
 .profile_pic{
   border: 4px solid white;
   z-index: 999;
@@ -421,5 +428,71 @@ li{
 }
 .update{
   background: #f8f8f8 url(../img/pattern.jpg) left top repeat;
-  padding-top:30px 
+  padding-top:5px;
+  padding-bottom:5px
+}
+
+.online_people{
+  background-color: rgba(245, 243, 245, 0.89);
+  height: 567px;
+}
+.online_people ul li{
+  padding-top: 10px;
+}
+.img-circle_on {
+    border-radius: 50%;
+    width: 50px;
+}
+#chat-body{
+  width: 100%;
+  height: 450px;
+  background-color: rgba(244, 242, 244, 0.71);
+}
+#chat-body p{
+  padding-left: 10px;
+  padding-top: 10px;
+  color: black;
+}
+.online_con{
+  padding: 0 !important;
+}
+#message{
+  width: 82%;
+  height: 58px;
+  border: 1px solid rgba(128, 128, 128, 0.65);
+}
+#send{
+  height: 58px;
+  width: 55px;
+  border: 1px solid gray;
+}
+#group{
+  height: 58px;
+}
+.padd{
+  padding: 0 !important
+}
+.mem{
+  background-color: rgb(195, 54, 54);
+  height: 60px;
+  font-size: 1.5em;
+  color: white;
+  padding-top: 10px;
+  text-align: center;
+}
+.onimg{
+      padding-right: 10px;
+}
+.info_f button{
+  float: right;
+  margin-top: 15px;
+  color: white;
+  background-color: rgb(216, 69, 69);
+}
+.info-back h3{
+  display: inline-block;
+}
+.findf{
+  border: 1px solid rgba(128, 128, 128, 0.26);
+  padding: 10px;"
 }
