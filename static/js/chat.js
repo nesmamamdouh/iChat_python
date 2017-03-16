@@ -33,7 +33,7 @@ $(document).ready(function(){
 	}
 
 	$('#send').click(function(e){
-		name = $(".name").val();
+		name = $(".name").text();
 		console.log(name);
 		var x = document.getElementById("group").selectedIndex;
     var y = document.getElementById("group").options;
@@ -49,19 +49,19 @@ function doLongPolling(){
     $.ajax({
         method: 'get',
         url: 'http://localhost:8888/myapi',
-        data: {lastmod: lastModified},
+        data: {lastmod: lastModified,id:window.getParameterByName("g")},
         success: function(res){
             lastModified = res.lastmod? res.lastmod:0;
             $("select.groupmates option").each(function(){$(this).remove()});
 						$("ul.groupmates li").each(function(){$(this).remove()});
-
             rslt=res.body.split("\n");
+						console.log(rslt);
             rslt.splice(rslt.length-1,1)
             $.each(rslt,function (i) {
-                    $("#group").append("<option value='"+rslt[i]+"'>"+rslt[i]+"</option>")// <img class='onimg' src='"+{{ static_url("img/onlineimg.png")}}+"' alt=""><img class='img-circle_on' src='"+{{ static_url(+"img/pic.jpg"+)}}+
-					if (rslt[i]!="all") {
-							$("select.groupmates").append("<li value='"+rslt[i]+"'>"+rslt[i]+"</li>")
-					}
+             $("#group").append("<option value='"+rslt[i]+"'>"+rslt[i]+"</option>")// <img class='onimg' src='"+{{ static_url("img/onlineimg.png")}}+"' alt=""><img class='img-circle_on' src='"+{{ static_url(+"img/pic.jpg"+)}}+
+						if (rslt[i]!="all") {
+								$(".groupmates").append("<li value='"+rslt[i]+"'>"+rslt[i]+"</li>")
+						}
             });
 
             console.log(res);

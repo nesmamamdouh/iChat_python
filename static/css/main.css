@@ -6982,3 +6982,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   position: relative;
   padding-top: 50px;
 }*/
+.n_g{
+display: inline-block;
+    margin-bottom: 0px;
+    font-weight: 700;
+    font-size: 17px;
+    background-color: #bb2929;
+    color: white;
+    padding: 9px;
+    float: right;
+}

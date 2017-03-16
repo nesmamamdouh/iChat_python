@@ -17,7 +17,6 @@ class MyGroupsHandler(BaseHandler):
         usr_info = json.loads(usr_info)
         checkgroups = db.groups.find({'member':{'$all':[usr_info['id']]}});
         self.render("../templates/mygroups.html",checkgroups=checkgroups,usr_info=json_util.dumps(usr_info))
-
 class DiscoverGroupsHandler(BaseHandler):
     def get(self):
         usr_info = self.get_secure_cookie("user")
@@ -32,5 +31,16 @@ class AddToGroupHandler(BaseHandler):
         id_usr5 = usr_info['id']
         print(req_group_id)
         print(id_usr5)
-        confirm_group = db.groups.update({'_id': ObjectId(req_group_id) }, {"$push" : {'member': str(id_usr5)  }})
+        confirm_group = db.groups.update({'_id':ObjectId(req_group_id)}, {'$push': {'member': id_usr5}})
         self.redirect("/discovergroups")
+class CreateGroupHandler(BaseHandler):
+    def post(self):
+        usr_info = self.get_secure_cookie("user")
+        usr_info = json.loads(usr_info)
+        groupname = self.get_argument("groupname", "")
+        group_profile = self.get_argument("group-profile", "")
+        group_cat = self.get_argument("groupcategory", "")
+        db.groups.insert([{'name':groupname,'admin':usr_info['id'],'group_category':group_cat,'member': [usr_info['id']],'picurl':group_profile}])
+        self.redirect("/mygroups")
+    def get(self):
+        self.render(u"../templates/creategroup.html")

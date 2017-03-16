@@ -6,15 +6,16 @@ class APIHandler(web.RequestHandler):
     def get(self):
         print("===================================file")
         clm = float(self.get_query_argument('lastmod'));
-        slm, data = os.path.getmtime('../file.txt'),{}
+        id_g = self.get_query_argument('id');
+        slm, data = os.path.getmtime("../file'"+id_g+"'.txt"),{}
         while( slm <= clm):
             print("file before sleep")
             yield gen.sleep(0.5)
             print("file after sleep")
-            slm = os.path.getmtime('file.txt')
+            slm = os.path.getmtime("../file'"+id_g+"'.txt")
             print("file mtime= "+str(slm))
         print("======================file out of loop")
-        fl = open("file.txt",'r')
+        fl = open("../file'"+id_g+"'.txt",'r')
         data['body'] = fl.read()
         data['lastmod'] = slm;
         fl.close()

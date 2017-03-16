@@ -49,7 +49,9 @@ app = web.Application([
         (r"/requestfriends", RequestFriendsHandler),
         (r"/addfriend_request", ConfimFriendsHandler),
         (r"/removefriend", RemoveFriendsHandler),
-        (r"/addtogroup", AddToGroupHandler)
+        (r"/addtogroup", AddToGroupHandler),
+        (r"/creategroup", CreateGroupHandler)
+
 	],static_path='static',debug=True,cookie_secret= 'Settings.COOKIE_SECRET')
 app.listen(8888)
 ioloop.IOLoop.current().start()
